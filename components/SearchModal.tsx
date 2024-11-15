@@ -7,9 +7,6 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command';
-import { Note } from '@/modules/notes/note';
-import { useEffect, useState } from 'react';
-import { useDebouncedCallback } from 'use-debounce';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -26,24 +23,10 @@ export function SearchModal({
   onKeywordChanged,
   onClose,
 }: SearchModalProps) {
-  const [isMounted, setIsMounted] = useState(false);
-  const debounced = useDebouncedCallback(onKeywordChanged, 500);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
-
   return (
     <CommandDialog open={isOpen} onOpenChange={onClose}>
       <Command shouldFilter={false}>
-        <CommandInput
-          placeholder={'キーワードで検索'}
-          onValueChange={debounced}
-        />
+        <CommandInput placeholder={'キーワードで検索'} />
         <CommandList>
           <CommandEmpty>条件に一致するノートがありません</CommandEmpty>
           <CommandGroup>
