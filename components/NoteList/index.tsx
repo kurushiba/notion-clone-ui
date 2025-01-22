@@ -1,10 +1,5 @@
 import { cn } from '@/lib/utils';
-import { useState } from 'react';
 import { NoteItem } from './NoteItem';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useNoteAction } from '@/modules/notes/note.action';
-import { useNoteStore } from '@/modules/notes/note.state';
-import { Note } from '@/modules/notes/note';
 
 interface NoteListProps {
   layer?: number;
